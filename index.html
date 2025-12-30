@@ -8,12 +8,8 @@
 <title>Mortal Kombat II – Mega Drive</title>
 
 <script>
-  /* ==============================
-     CONFIGURAÇÃO EMULATORJS
-     ============================== */
-
   EJS_DEBUG_XX = true;
-  EJS_threads = false;              // obrigatório no GitHub Pages
+  EJS_threads = false;
 
   EJS_player     = "#game";
   EJS_core       = "genesis_plus_gx";
@@ -23,11 +19,9 @@
   EJS_startOnLoaded = true;
   EJS_fullscreenOnLoaded = false;
 
-  /* 🎮 FORÇA CONTROLE MEGA DRIVE 6 BOTÕES */
+  /* 🎮 FORÇA CONTROLE MEGA DRIVE 6 BOTÕES (FORMA CORRETA) */
   EJS_coreOptions = {
-    genesis_plus_gx: {
-      input_device_p1: "6button"
-    }
+    genesis_plus_gx_input_device_p1: "6button"
   };
 </script>
 
