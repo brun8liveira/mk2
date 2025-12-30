@@ -19,11 +19,23 @@
   EJS_startOnLoaded = true;
   EJS_fullscreenOnLoaded = false;
 
-  /* 🎮 FORÇA CONTROLE MEGA DRIVE 6 BOTÕES (FORMA CORRETA) */
+  /* 🎮 Core: Mega Drive 6 botões */
   EJS_coreOptions = {
     genesis_plus_gx_input_device_p1: "6button"
   };
+
+  /* 📱 CONTROLE TOUCH – FORÇA 6 BOTÕES + START */
+  EJS_VirtualGamepadSettings = {
+    enabled: true,
+    layout: "genesis",
+    buttons: [
+      "A", "B", "C",
+      "X", "Y", "Z",
+      "START"
+    ]
+  };
 </script>
+
 
 <script src="data/loader.js"></script>
 
