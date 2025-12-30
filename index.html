@@ -5,23 +5,14 @@
 <title>Mortal Kombat 2</title>
 
 <script>
-  window.EJS_onGameStart = () => {
-    setTimeout(() => {
-      EJS_emulator?.gamepad?.update?.();
-    }, 500);
-  };
-</script>
-
-<script>
-  // CONFIGURAÇÃO MEGA DRIVE / GENESIS
   EJS_DEBUG_XX = true;
   EJS_threads = false;
-  EJS_player        = "#game";
-  EJS_core          = "genesis_plus_gx";   // Core correto Mega Drive
-  EJS_gameUrl       = "roms/mk2.bin";      // ROM do repositório gen-sor
-  EJS_pathtodata    = "data/";             // Caminho do EmulatorJS
 
-  // Inicialização automática
+  EJS_player = "#game";
+  EJS_core = "genesis_plus_gx";
+  EJS_gameUrl = "roms/mk2.bin";
+  EJS_pathtodata = "data/";
+
   EJS_startOnLoaded = true;
   EJS_fullscreenOnLoaded = false;
 
