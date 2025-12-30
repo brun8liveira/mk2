@@ -5,6 +5,14 @@
 <title>Mortal Kombat 2</title>
 
 <script>
+  window.EJS_onGameStart = () => {
+    setTimeout(() => {
+      EJS_emulator?.gamepad?.update?.();
+    }, 500);
+  };
+</script>
+
+<script>
   // CONFIGURAÇÃO MEGA DRIVE / GENESIS
   EJS_DEBUG_XX = true;
   EJS_threads = false;
@@ -16,6 +24,13 @@
   // Inicialização automática
   EJS_startOnLoaded = true;
   EJS_fullscreenOnLoaded = false;
+
+  /* 🔥 FORÇA CONTROLE DE 6 BOTÕES */
+  EJS_coreOptions = {
+    genesis_plus_gx: {
+      input_device_p1: "6button"
+    }
+  };
 </script>
 
 <script src="data/loader.js"></script>
