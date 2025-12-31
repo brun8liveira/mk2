@@ -5,80 +5,148 @@
 <title>MK2</title>
 
 <script>
-  // CONFIGURAÇÃO MEGA DRIVE / GENESIS
   EJS_DEBUG_XX = true;
   EJS_threads = false;
-  EJS_player        = "#game";
-  EJS_core          = "genesis_plus_gx";   // Core correto Mega Drive
-  EJS_gameUrl       = "roms/mk2.bin";      // ROM do repositório gen-sor
-  EJS_pathtodata    = "data/";             // Caminho do EmulatorJS
-  EJS_coreOptions = {
-  genesis_plus_gx_input_device_p1: "6button"
-};
 
-  // Inicialização automática
+  EJS_player     = "#game";
+  EJS_core       = "genesis_plus_gx";
+  EJS_gameUrl    = "roms/mk2.bin";
+  EJS_pathtodata = "data/";
+
   EJS_startOnLoaded = true;
-  EJS_fullscreenOnLoaded = false;
 </script>
 
 <script src="data/loader.js"></script>
 
 <style>
-  html, body {
-    margin: 0;
-    background: black;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
+html, body {
+  margin: 0;
+  background: black;
+  height: 100%;
+  overflow: hidden;
+}
 
-  #game {
-    width: 100vw;
-    height: 100vh;
-  }
+/* Área do jogo */
+#game {
+  width: 100vw;
+  height: 100vh;
+}
 
-  /* Mini‑box lisa, sem textura */
-  #overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    color: white;
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 10;
-    cursor: pointer;
-    border-radius: 12px;
-  }
+/* Overlay iniciar */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  color: white;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  cursor: pointer;
+}
 
-  /* Botão centralizado */
-  #overlay span {
-    padding: 18px 28px;
-    background: #222;
-    border: 2px solid #fff;
-    border-radius: 10px;
-  }
+/* CONTROLE */
+#controls {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
 
-  #overlay:hover span {
-    background: #333;
-  }
+.btn {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: 2px solid rgba(255,255,255,.6);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Botões direita */
+.A { right: 140px; bottom: 140px; }
+.B { right: 70px;  bottom: 190px; }
+.C { right: 0px;   bottom: 140px; }
+
+.X { right: 140px; bottom: 260px; }
+.Y { right: 70px;  bottom: 310px; }
+.Z { right: 0px;   bottom: 260px; }
+
+/* Start */
+.START {
+  right: 50%;
+  bottom: 60px;
+  transform: translateX(50%);
+  width: 90px;
+  border-radius: 14px;
+}
+
+/* Direcional */
+.UP    { left: 90px;  bottom: 240px; }
+.DOWN  { left: 90px;  bottom: 120px; }
+.LEFT  { left: 30px;  bottom: 180px; }
+.RIGHT { left: 150px; bottom: 180px; }
 </style>
 </head>
 
 <body>
-  <div id="overlay"><span>▶ TOCAR PARA JOGAR</span></div>
 
-  <div id="game"></div>
+<div id="overlay">▶ TOCAR PARA JOGAR</div>
+<div id="game"></div>
 
-  <script>
-    const overlay = document.getElementById("overlay");
-    overlay.addEventListener("click", () => {
-      overlay.remove();
-      document.documentElement.requestFullscreen?.();
-    });
-  </script>
+<div id="controls">
+  <!-- Direções -->
+  <div class="btn UP"    data-key="ArrowUp">↑</div>
+  <div class="btn DOWN"  data-key="ArrowDown">↓</div>
+  <div class="btn LEFT"  data-key="ArrowLeft">←</div>
+  <div class="btn RIGHT" data-key="ArrowRight">→</div>
+
+  <!-- 6 botões -->
+  <div class="btn A" data-key="z">A</div>
+  <div class="btn B" data-key="x">B</div>
+  <div class="btn C" data-key="c">C</div>
+
+  <div class="btn X" data-key="a">X</div>
+  <div class="btn Y" data-key="s">Y</div>
+  <div class="btn Z" data-key="d">Z</div>
+
+  <!-- Start -->
+  <div class="btn START" data-key="Enter">START</div>
+</div>
+
+<script>
+const overlay = document.getElementById("overlay");
+overlay.onclick = () => {
+  overlay.remove();
+  document.documentElement.requestFullscreen?.();
+};
+
+function sendKey(key, type) {
+  document.dispatchEvent(new KeyboardEvent(type, {
+    key: key,
+    bubbles: true
+  }));
+}
+
+document.querySelectorAll(".btn").forEach(btn => {
+  const key = btn.dataset.key;
+  btn.addEventListener("touchstart", e => {
+    e.preventDefault();
+    sendKey(key, "keydown");
+  });
+  btn.addEventListener("touchend", e => {
+    e.preventDefault();
+    sendKey(key, "keyup");
+  });
+});
+</script>
+
 </body>
 </html>
