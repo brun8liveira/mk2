@@ -5,7 +5,7 @@
 <title>Mortal Kombat II</title>
 
 <script>
-  EJS_DEBUG_XX = true;
+  EJS_DEBUG_XX = false;
   EJS_threads = false;
 
   EJS_player     = "#game";
@@ -13,17 +13,16 @@
   EJS_gameUrl    = "roms/mk2.bin";
   EJS_pathtodata = "data/";
 
+  /* 🔑 ESSENCIAL */
   EJS_startOnLoaded = true;
 
+  /* 🎮 CORE EM 6 BOTÕES */
   EJS_coreOptions = {
     genesis_plus_gx_input_device_p1: "6button"
   };
 
-  EJS_VirtualGamepadSettings = {
-    enabled: true,
-    layout: "genesis",
-    buttons: ["A","B","C","X","Y","Z","START"]
-  };
+  /* 📱 ESQUEMA DE CONTROLE CORRETO */
+  EJS_controlScheme = "genesis-6";
 </script>
 
 <script src="data/loader.js"></script>
@@ -41,21 +40,24 @@ html, body {
   height: 100vh;
 }
 
+/* Overlay inicial */
 #overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.85);
   color: white;
+  font-size: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
   z-index: 10;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
+
 <div id="overlay">▶ TOCAR PARA JOGAR</div>
 <div id="game"></div>
 
@@ -65,5 +67,6 @@ document.getElementById("overlay").onclick = () => {
   document.documentElement.requestFullscreen?.();
 };
 </script>
+
 </body>
 </html>
