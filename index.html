@@ -2,29 +2,23 @@
 <html lang="pt-BR">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>MK2</title>
+<title>Genesis – AK</title>
 
 <script>
   // CONFIGURAÇÃO MEGA DRIVE / GENESIS
+  EJS_DEBUG_XX = true;
+  EJS_threads = false;
   EJS_player        = "#game";
   EJS_core          = "genesis_plus_gx";   // Core correto Mega Drive
-  EJS_gameUrl       = "roms/mk2.bin";      // ROM
+  EJS_gameUrl       = "roms/sor.bin";      // ROM do repositório gen-sor
   EJS_pathtodata    = "data/";             // Caminho do EmulatorJS
 
   // Inicialização automática
   EJS_startOnLoaded = true;
-
-  // Forçar controle com 3 botões + Start
-  EJS_controls = {
-    "genesis_plus_gx": {
-      "gamepad": {
-        "buttons": ["A","B","C","Start"]
-      }
-    }
-  };
+  EJS_fullscreenOnLoaded = false;
 </script>
-<script src="data/loader.js"></script>
 
+<script src="data/loader.js"></script>
 
 <style>
   html, body {
