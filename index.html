@@ -6,20 +6,25 @@
 
 <script>
   // CONFIGURAÇÃO MEGA DRIVE / GENESIS
-  EJS_DEBUG_XX = true;
-  EJS_threads = false;
   EJS_player        = "#game";
   EJS_core          = "genesis_plus_gx";   // Core correto Mega Drive
-  EJS_gameUrl       = "roms/mk2.bin";      // ROM do repositório gen-sor
+  EJS_gameUrl       = "roms/mk2.bin";      // ROM
   EJS_pathtodata    = "data/";             // Caminho do EmulatorJS
 
   // Inicialização automática
   EJS_startOnLoaded = true;
-  EJS_fullscreenOnLoaded = false;
+
+  // Forçar controle com 3 botões + Start
+  EJS_controls = {
+    "genesis_plus_gx": {
+      "gamepad": {
+        "buttons": ["A","B","C","Start"]
+      }
+    }
+  };
 </script>
-
-
 <script src="data/loader.js"></script>
+
 
 <style>
   html, body {
