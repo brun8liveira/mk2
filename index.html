@@ -4,21 +4,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>MK2</title>
 
-<script>
-  // CONFIGURAÇÃO MEGA DRIVE / GENESIS
-  EJS_DEBUG_XX = true;
-  EJS_threads = false;
-  EJS_player        = "#game";
-  EJS_core          = "segaMD";   // Core correto Mega Drive
-  EJS_gameUrl       = "roms/mk2.bin";      // ROM do repositório gen-sor
-  EJS_pathtodata    = "data/";             // Caminho do EmulatorJS
+  <script>
+    EJS_player = "#game";
+    EJS_core = "segaMD";                       // Sega Genesis / Mega Drive
+    EJS_gameUrl = "roms/mk2.bin"; // ajuste o nome da sua ROM
+    EJS_pathtodata = "https://cdn.emulatorjs.org/latest/data/";
+    EJS_startOnLoaded = true;
+    EJS_fullscreenOnLoaded = false;
+  </script>
 
-  // Inicialização automática
-  EJS_startOnLoaded = true;
-  EJS_fullscreenOnLoaded = false;
-</script>
-
-<script src="data/loader.js"></script>
+  <script src="https://cdn.emulatorjs.org/latest/data/loader.js"></script>
 
 <style>
   html, body {
